@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #001e4d;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    max-height: 50vh;
+    width: 50vw;
+    background-color: white;
+    text-align: center;
+    background-image: url(images.jpeg);
+    opacity: 1;
+    color: white;
+}
+
+select {
+    width: 20vw;
+    text-align: center;
+    padding: 5px;
+    margin-top: 10px;
+}
+#facts{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#cat1{
+    width: 40vw;
+    height: 12vh;
+    color: black;
+    font-weight: 600;
+    background-color: white;
+}
+.facts-section {
+    margin-top: 60px;
+    font-size: 1.1rem;
+    overflow: hidden;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    width: 100%;
+    /* background-color: aqua; */
+    margin-top: -20px;
+}
+
+.fact-btn{
+    height: 50px;
+    padding: 10px;
+    cursor: pointer;
+}
