@@ -25,7 +25,7 @@ calBtn.addEventListener("click", () => {
     console.log(datePicker.value);
     let selectedDate = datePicker.value;
     let dateArray = selectedDate.split("-");
-    let birthYear = dateArray[0];
+    let birthYear = dateArray[0];   
     let birthMonth = dateArray[1];
     let birthDay = dateArray[2];
 
