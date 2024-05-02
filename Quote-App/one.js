@@ -2,7 +2,7 @@ const api_url = "https://api.quotable.io/random";
 const quote = document.getElementById("quote");
 const author = document.getElementById("author");
 
-async function getquote(url){
+async function getquote(url) {
     const response = await fetch(url);
     var data = await response.json();
     quote.innerHTML = data.content;
@@ -12,5 +12,23 @@ async function getquote(url){
 getquote(api_url);
 
 function tweet() {
-    window.open("https://twitter.com/intent/tweet?text=" + quote.innerHTML + "---- by " + author.innerHTML, "Tweet Window", "width=600, height=300");
+    window.open(
+        "https://twitter.com/intent/tweet?text=" +
+        quote.innerHTML +
+        "---- by " +
+        author.innerHTML,
+        "Tweet Window",
+        "width=600, height=300"
+    );
+}
+
+function linkedin() {
+    window.open(
+        "https://www.linkedin.com/feed/?shareActive=true&text=" +
+        quote.innerHTML +
+        "---- by " +
+        author.innerHTML,
+        "Tweet Window",
+        "width=600, height=300"
+    );
 }
