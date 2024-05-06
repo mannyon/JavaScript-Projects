@@ -87,18 +87,39 @@ function changeSongName(filePath) {
     thumbnailMaker(nameOfSong);
 }
 
-var previousNumber = null;
+
+var emptyArray = [];
+
+function randomArray(dirSongs) {
+    for(let i=0; i<dirSongs.length; i++){
+        emptyArray.push(i);
+    }
+}
 
 
+
+function arrayRandom() {
+    for(let i=0; i<emptyArray.length; i++){
+        let k = Math.floor(Math.random() * emptyArray.length);
+        return [emptyArray[k], k];
+    }
+}
+
+let functionCalled = false;
 async function main() {
     var dirSongs = await getSongs();
     song.pause();
     song.currentTime = 0;
     ctrlIcon.classList.add("fa-pause");
     ctrlIcon.classList.remove("fa-play");
-    // let randomNumber = Math.random();
-    // let i = Math.floor(randomNumber * 7);
-    let i = generateRandomNumber();
+    if (!functionCalled) {
+        randomArray(dirSongs);
+        functionCalled = true;
+    }
+    let j = arrayRandom();
+    let i = j[0];
+    let k = j[1];
+
     
         song = new Audio(dirSongs[i]);
         let modifiedURL = dirSongs[i].replace("http://127.0.0.1:5500", "");
@@ -106,19 +127,10 @@ async function main() {
         nextSong(decodedPath);
         changeName(decodedPath);
         changeSongName(decodedPath);
+        emptyArray.splice(k, 1);
+        if(emptyArray.length==0){
+            functionCalled=false;
+        }
 }
 
 
-// Initialize previousNumber variable to keep track of the previously generated number
-
-function generateRandomNumber() {
-    var randomNumber;
-
-    // Generate a random number between 0 and 6, excluding the previous number
-    do {
-        randomNumber = Math.floor(Math.random() * 7); // Generate a random number between 0 (inclusive) and 7 (exclusive)
-    } while (randomNumber === previousNumber); // Repeat the process if the generated number is the same as the previous one
-
-    previousNumber = randomNumber; // Update the previousNumber variable with the newly generated number
-    return randomNumber; // Return the generated random number
-}
