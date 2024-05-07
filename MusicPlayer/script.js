@@ -19,6 +19,7 @@ function nextSong(audioMain) {
     song.onloadedmetadata = function () {
         progress.max = song.duration;
         progress.value = song.currentTime;
+         
     }
 
 
@@ -46,6 +47,7 @@ if (song.play()) {
 
 progress.onchange = function () {
     song.currentTime = progress.value;
+    song.play();
     ctrlIcon.classList.add("fa-pause");
     ctrlIcon.classList.remove("fa-play");
 }
@@ -91,7 +93,7 @@ function changeSongName(filePath) {
 var emptyArray = [];
 
 function randomArray(dirSongs) {
-    for(let i=0; i<dirSongs.length; i++){
+    for (let i = 0; i < dirSongs.length; i++) {
         emptyArray.push(i);
     }
 }
@@ -99,28 +101,60 @@ function randomArray(dirSongs) {
 
 
 function arrayRandom() {
-    for(let i=0; i<emptyArray.length; i++){
+    for (let i = 0; i < emptyArray.length; i++) {
         let k = Math.floor(Math.random() * emptyArray.length);
         return [emptyArray[k], k];
     }
 }
 
+
 let functionCalled = false;
+
+let prevSong = [5];
+
+let prevFunc = false;
+
+let indexK = 2;
+
+function mytimetoshine() {
+    prevFunc = false;
+    main();
+}
+
+function prevSongTime() {
+    if (indexK <= prevSong.length) {
+        prevFunc = true;
+        main();
+    }
+    if(indexK > prevSong.length || prevSong.length==0){
+        song.play();
+        song.currentTime = 0;
+        ctrlIcon.classList.add("fa-pause");
+        ctrlIcon.classList.remove("fa-play");
+    }
+
+}
+
+
+
+
 async function main() {
     var dirSongs = await getSongs();
     song.pause();
     song.currentTime = 0;
     ctrlIcon.classList.add("fa-pause");
     ctrlIcon.classList.remove("fa-play");
+    
     if (!functionCalled) {
         randomArray(dirSongs);
         functionCalled = true;
     }
-    let j = arrayRandom();
-    let i = j[0];
-    let k = j[1];
+    if (prevFunc == false) {
+        let j = arrayRandom();
+        let i = j[0];
+        let k = j[1];
+        prevSong.push(i);
 
-    
         song = new Audio(dirSongs[i]);
         let modifiedURL = dirSongs[i].replace("http://127.0.0.1:5500", "");
         let decodedPath = decodeURIComponent(modifiedURL).replace(/%20/g, ' ');
@@ -128,9 +162,33 @@ async function main() {
         changeName(decodedPath);
         changeSongName(decodedPath);
         emptyArray.splice(k, 1);
-        if(emptyArray.length==0){
-            functionCalled=false;
+        
+        if (emptyArray.length == 0) {
+            functionCalled = false;
         }
+    }
+    else {
+
+        let i = prevSong.length - indexK;
+
+        if (i >= 0) {
+            indexK++;
+
+            song = new Audio(dirSongs[prevSong[i]]);
+            let modifiedURL = dirSongs[prevSong[i]].replace("http://127.0.0.1:5500", "");
+            let decodedPath = decodeURIComponent(modifiedURL).replace(/%20/g, ' ');
+            nextSong(decodedPath);
+            changeName(decodedPath);
+            changeSongName(decodedPath);
+            if (emptyArray.length == 0) {
+                functionCalled = false;
+            }
+
+        }
+
+
+    }
+
 }
 
 
