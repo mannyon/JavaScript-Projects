@@ -29,6 +29,9 @@ function handleClick(event) {
         singVal = '÷';
     }
 
+    beforeNum = ansPara.innerHTML;
+    console.log(beforeNum);
+
     if (clickedElement.innerHTML === '=') {
 
         if (singVal === '+') {
@@ -46,8 +49,6 @@ function handleClick(event) {
             afterNum = ansPara.innerHTML.split(afterNum)[1].trim();
 
             ansPara.innerHTML = realAns;
-
-
         }
         else if (singVal === '-') {
             beforeNum = ansPara.innerHTML.split('=')[0].trim();
