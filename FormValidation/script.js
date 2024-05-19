@@ -60,8 +60,8 @@ function validateMessage() {
     var left = required - message.length;
 
     if(left>0){
-        messageError.innerHTML = left + ' more characters required';
-        return false;
+        messageError.innerHTML = left + ' more characters';
+        return true;
     }
     messageError.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
     return true;
