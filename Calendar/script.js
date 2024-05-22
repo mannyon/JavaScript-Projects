@@ -1,37 +1,14 @@
-let myDate = document.getElementById("date");
-let myDay = document.getElementById("day");
-let myMonth = document.getElementById("month");
-let myYear = document.getElementById("year");
+const date = document.getElementById("date");
+const day = document.getElementById("day");
+const month = document.getElementById("month");
+const year = document.getElementById("year");
 
-
-// Create a new Date object for the current date and time
 const today = new Date();
 
-// Get the individual components of the date
-const year = today.getFullYear();
-const month = today.getMonth(); // Months are zero-indexed, so add 1
-const day = today.getDate();
-// Get the day of the week (0-6)
-const dayIndex = today.getDay();
+const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const allMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-// Map the day index to the corresponding day name
-const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const dayName = daysOfWeek[dayIndex];
-const monthsOfYear = [
-    "January", "February", "March", "April", "May", "June", 
-    "July", "August", "September", "October", "November", "December"
-  ];
-
-// Optionally, format the date with leading zeros
-const formattedMonth = month < 10 ? `0${month}` : month;
-const formattedDay = day < 10 ? `0${day}` : day;
-
-// Construct a string in the desired format (e.g., YYYY-MM-DD)
-const formattedDate = `${year}-${formattedMonth}-${formattedDay}-${dayName}`;
-
-myDate.innerHTML = formattedDay;
-myDay.innerHTML = dayName;
-myMonth.innerHTML = monthsOfYear[month];
-myYear.innerHTML = year;
-
-
+date.innerHTML = (today.getDate()<10 ? "0" : "") + today.getDate();
+day.innerHTML = weekDays[today.getDay()];
+month.innerHTML = allMonths[today.getMonth()];
+year.innerHTML = today.getFullYear();
