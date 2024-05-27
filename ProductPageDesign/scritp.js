@@ -1,23 +1,25 @@
+let productImg = document.getElementById("productImg");
+let btn = document.getElementsByClassName("btn");
 
-let left = document.querySelector(".left");
-let model = document.getElementById("model");
-let size = document.querySelector(".size");
+btn[0].onclick = function(){
+    productImg.src = "images/image1.png";
 
-left.onclick = function(e) {
-    let ans = e.target;
-    if(ans.value.includes('option1')){
-        model.src = "images/image1.png";
+    for(bt of btn){
+        bt.classList.remove("active");
     }
-    else if(ans.value.includes('option2')){
-        model.src = "images/image2.png";
-    }
-    else if(ans.value.includes('option3')){
-        model.src = "images/image3.png";
-    }
+    this.classList.add("active");
 }
-let flag = 0;
-size.onclick = function(e){
-    let ans = e.target;
-    ans.style.color = 'red';
+btn[1].onclick = function(){
+    productImg.src = "images/image2.png";
+    for(bt of btn){
+        bt.classList.remove("active");
+    }
+    this.classList.add("active");
 }
-
+btn[2].onclick = function(){
+    productImg.src = "images/image3.png";
+    for(bt of btn){
+        bt.classList.remove("active");
+    }
+    this.classList.add("active");
+}

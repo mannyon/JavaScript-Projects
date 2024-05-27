@@ -11,43 +11,71 @@
 
 <body>
     <div class="container">
-        <div class="left">
-            <img src="images/image1.png" id="model">
-            <input type="radio" id="option1" name="option" value="option1" checked>
-            <input type="radio" id="option2" name="option" value="option2">
-            <input type="radio" id="option3" name="option" value="option3">
-        </div>
-        <div class="right">
-            <div class="upper">
-                <h1 class="heading">Casual T Shirt</h1>
-                <p class="prize">$15.00</p>
-                <p class="discount">30% OFF</p>
-                <p class="content">
-                    Wrangler is an American manufacturer of jeans and other clothing items, particularly workwear.
-                </p>
-            </div>
-            <div class="middle">
-                <div class="size">
-                    <p>Size</p>
-                    <span>S</span>
-                    <span>M</span>
-                    <span>L</span>
-                    <span>XL</span>
-                    <span>XXL</span>
-                </div>
-                <div class="color">
-                    <p>Color</p>
-                    <span><i class="fa-solid fa-circle red"></i></span>
-                    <span><i class="fa-solid fa-circle green"></i></span>
-                    <span><i class="fa-solid fa-circle blue"></i></span>
-                    <span><i class="fa-solid fa-circle pink"></i></span>
-                </div>
-                <div class="quantity">
-                    <p>quantity</p>
-                    <input type="number" min="0" value="1">
+        <div class="product">
+            <div class="gallery">
+                <img src="images/image1.png" id="productImg">
+                <div class="controls">
+                    <span class="btn active"></span>
+                    <span class="btn"></span>
+                    <span class="btn"></span>
                 </div>
             </div>
-            <button>Buy Now</button>
+            <div class="details">
+                <h1>Causal T Shirt</h1>
+                <h2>$15.00</h2>
+                <h3>30% OFF</h3>
+                <p>Wrangler is an American manufacturer of jeans and other clothing items, particularly workwear.</p>
+                <form>
+                    <div class="size-select">
+                        <p>Size</p>
+                        <label for="small">
+                            <input type="radio" name="size" id="small">
+                            <span>S</span>
+                        </label>
+                        <label for="medium">
+                            <input type="radio" name="size" id="medium">
+                            <span>M</span>
+                        </label>
+                        <label for="large">
+                            <input type="radio" name="size" id="large">
+                            <span>L</span>
+                        </label>
+                        <label for="x-large">
+                            <input type="radio" name="size" id="x-large">
+                            <span>XL</span>
+                        </label>
+                        <label for="xx-large">
+                            <input type="radio" name="size" id="xx-large">
+                            <span>XXL</span>
+                        </label>
+                    </div>
+                    <div class="color-select">
+                        <p>Color</p>
+                        <label for="red">
+                            <input type="radio" name="color" id="red">
+                            <span class="color-1"></span>
+                        </label>
+                        <label for="green">
+                            <input type="radio" name="color" id="green">
+                            <span class="color-2"></span>
+                        </label>
+                        <label for="blue">
+                            <input type="radio" name="color" id="blue">
+                            <span class="color-3"></span>
+                        </label>
+                        <label for="pink">
+                            <input type="radio" name="color" id="pink">
+                            <span class="color-4"></span>
+                        </label>
+                    </div>
+
+                    <div class="quantity-select">
+                        <p>Quantity</p>
+                        <input type="number" value="1" min="1">
+                    </div>
+                    <button>Buy Now</button>
+                </form>
+            </div>
         </div>
     </div>
     <script src="scritp.js"></script>
